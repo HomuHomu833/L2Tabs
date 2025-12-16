@@ -41,7 +41,7 @@ public class TabInventory extends TabBase<InvTabData, TabInventory> {
 	@SubscribeEvent
 	public static void guiPostRenderBG(ScreenEvent.BackgroundRendered event) {
 		Screen screen = event.getScreen();
-		for (var e : screen.children()) {
+		for (var e : List.copyOf(screen.children())) {
 			if (e instanceof TabBase<?, ?> tab) {
 				if (tab.manager.selected != tab.token)
 					tab.renderBackground(event.getGuiGraphics());
